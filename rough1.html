@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Paper Scissors Game</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:450px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+}
+
+h1{
+    color:#333;
+}
+
+.choices{
+    margin:25px 0;
+}
+
+.choice{
+    width:1000px;
+    height:90px;
+    font-size:40px;
+    border:none;
+    border-radius:50%;
+    margin:10px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.choice:hover{
+    transform:scale(1.15);
+}
+
+.rock{
+    background:#ffcc80;
+}
+
+.paper{
+    background:#90caf9;
+}
+
+.scissors{
+    background:#ef9a9a;
+}
+
+#result{
+    margin-top:20px;
+    color:green;
+}
+
+.scoreboard{
+    margin-top:25px;
+    background:#f2f2f2;
+    padding:15px;
+    border-radius:10px;
+}
+
+.scoreboard p{
+    font-size:20px;
+}
+
+.reset{
+    margin-top:20px;
+    padding:12px 25px;
+    background:red;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.reset:hover{
+    background:darkred;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎮 Rock Paper Scissors Game</h1>
+
+<div class="choices">
+
+<button class="choice rock" onclick="playGame('rock')">
+🪨
+</button>
+
+<button class="choice paper" onclick="playGame('paper')">
+📄
+</button>
+
+<button class="choice scissors" onclick="playGame('scissors')">
+✂️
+</button>
+
+</div>
+
+<h2 id="result">
+Choose Rock, Paper or Scissors
+</h2>
+
+<div class="scoreboard">
+
+<h2>📊 Scoreboard</h2>
+
+<p>Wins : <span id="wins">0</span></p>
+
+<p>Losses : <span id="losses">0</span></p>
+
+<p>Draws : <span id="draws">0</span></p>
+
+</div>
+
+<button class="reset" onclick="resetGame()">
+Restart Game
+</button>
+
+</div>
+
+<script>
+
+let wins=0;
+let losses=0;
+let draws=0;
+
+function playGame(playerChoice){
+
+    let choices=["rock","paper","scissors"];
+
+    let computerChoice=
+    choices[Math.floor(Math.random()*3)];
+
+    let result="";
+
+    if(playerChoice===computerChoice){
+
+        result="🤝 Draw! Both selected "+playerChoice;
+        draws++;
+
+    }
+
+    else if(
+
+    (playerChoice==="rock" && computerChoice==="scissors") ||
+
+    (playerChoice==="paper" && computerChoice==="rock") ||
+
+    (playerChoice==="scissors" && computerChoice==="paper")
+
+    ){
+
+        result="🎉 You Win! Computer selected "+computerChoice;
+        wins++;
+
+    }
+
+    else{
+
+        result="❌ You Lose! Computer selected "+computerChoice;
+        losses++;
+
+    }
+
+    document.getElementById("result").innerHTML=result;
+
+    document.getElementById("wins").innerHTML=wins;
+
+    document.getElementById("losses").innerHTML=losses;
+
+    document.getElementById("draws").innerHTML=draws;
+
+}
+
+function resetGame(){
+
+    wins=0;
+    losses=0;
+    draws=0;
+
+    document.getElementById("wins").innerHTML=0;
+    document.getElementById("losses").innerHTML=0;
+    document.getElementById("draws").innerHTML=0;
+
+    document.getElementById("result").innerHTML=
+    "Choose Rock, Paper or Scissors";
+
+}
+
+</script>
+
+</body>
+</html>

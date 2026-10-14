@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button onclick="check('Delhi')">Delhi</button><br>
+        <button onclick="check('Mumbai')">Mumbai</button><br>
+        <button onclick="check('Kolkata')">Kolkata</button><br>
+        <button onclick="check('Hyderabad')">Hyderabad</button>
+        <h2 id="result"></h2>
+        <script>
+            function check(answer){
+                if(answer=="Delhi"){
+                    document.getElementById("result").innerHTML="Correct Answer"
+                }
+                else{
+                    document.getElementById("result").innerHTML="Wrong Answer!"
+                }
+            }
+        </script>
+    </body>
+</html>
